@@ -55,18 +55,20 @@ class Triangle(Shape):
         super().__init__()
     def area(self):
         s = (self.side1 + self.side2 + self.side3) / 2
-        return (s * (s - self.side1) * (s - self.side2) * (s - self.side3)) ** 0.5
+        return (s * (s - self.side1) * (s - self.side2) * (s - self.side3)) ** 0.5 # Heron's formula
     def perimeter(self):
         return self.side1 + self.side2 + self.side3
+def total_area(shapes):
+    return sum(shape.area() for shape in shapes)
 
 # Test code (uncomment when ready)
-# shapes = [
-#     Circle(5),
-#     Rectangle(4, 6),
-#     Triangle(3, 4, 5)
-# ]
-#
-# for shape in shapes:
-#     print(f"{shape.__class__.__name__}: Area={shape.area():.2f}, Perimeter={shape.perimeter():.2f}")
-#
-# print(f"Total area: {total_area(shapes):.2f}")
+shapes = [
+    Circle(5),
+    Rectangle(4, 6),
+    Triangle(3, 4, 5)
+]
+
+for shape in shapes:
+    print(f"{shape.__class__.__name__}: Area={shape.area():.2f}, Perimeter={shape.perimeter():.2f}")
+
+print(f"Total area: {total_area(shapes):.2f}")
